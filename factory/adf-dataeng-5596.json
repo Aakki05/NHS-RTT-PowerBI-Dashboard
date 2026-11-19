@@ -1,0 +1,16 @@
+{
+	"name": "adf-dataeng-5596",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true,
+			"isExplicitlySet": false
+		}
+	},
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "90fb6a1c-c86a-45cd-b405-c1f5794f2937",
+		"tenantId": "602b8cad-29e9-496b-ab5a-0661c6e37291"
+	}
+}
