@@ -90,7 +90,7 @@
 				"     skipDuplicateMapOutputs: true) ~> select1",
 				"select1 derive(total_sales = toInteger(Co3) * toInteger(Co4)) ~> derivedColumn1",
 				"source2, select1 join(order_id == Co3,",
-				"     joinType:'inner',",
+				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
