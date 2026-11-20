@@ -1103,6 +1103,266 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText5')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "silver"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "state_id",
+						"type": "String"
+					},
+					{
+						"name": "state_abbr",
+						"type": "String"
+					},
+					{
+						"name": "county_state_name",
+						"type": "String"
+					},
+					{
+						"name": "county_id",
+						"type": "String"
+					},
+					{
+						"name": "county_name",
+						"type": "String"
+					},
+					{
+						"name": "latitude",
+						"type": "String"
+					},
+					{
+						"name": "longitude",
+						"type": "String"
+					},
+					{
+						"name": "consolidated_city-county",
+						"type": "String"
+					},
+					{
+						"name": "population",
+						"type": "String"
+					},
+					{
+						"name": "population_cohort",
+						"type": "String"
+					},
+					{
+						"name": "employment",
+						"type": "String"
+					},
+					{
+						"name": "employment_cohort",
+						"type": "String"
+					},
+					{
+						"name": "doe_climate_zone",
+						"type": "String"
+					},
+					{
+						"name": "cohort",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh)14",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions15",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh/capita)16",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions17",
+						"type": "String"
+					},
+					{
+						"name": "utility customers18",
+						"type": "String"
+					},
+					{
+						"name": "GHG emissions mtons CO2e",
+						"type": "String"
+					},
+					{
+						"name": "consumption (TcF)20",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions21",
+						"type": "String"
+					},
+					{
+						"name": "consumption (TcF/capita)22",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions23",
+						"type": "String"
+					},
+					{
+						"name": "utility customers24",
+						"type": "String"
+					},
+					{
+						"name": "occuped housing units",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh)26",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions27",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh/capita)28",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions29",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh)30",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions31",
+						"type": "String"
+					},
+					{
+						"name": "utility customers32",
+						"type": "String"
+					},
+					{
+						"name": "consumption (TcF)33",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions34",
+						"type": "String"
+					},
+					{
+						"name": "consumption (TcF/capita)35",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions36",
+						"type": "String"
+					},
+					{
+						"name": "consumption (TcF)37",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions38",
+						"type": "String"
+					},
+					{
+						"name": "utility customers39",
+						"type": "String"
+					},
+					{
+						"name": "buildings",
+						"type": "String"
+					},
+					{
+						"name": "area (sq. ft.)",
+						"type": "String"
+					},
+					{
+						"name": "consumption (gallons)42",
+						"type": "String"
+					},
+					{
+						"name": "consumption (gallons/capita)43",
+						"type": "String"
+					},
+					{
+						"name": "consumption (gallons)44",
+						"type": "String"
+					},
+					{
+						"name": "consumption (gallons/capita)45",
+						"type": "String"
+					},
+					{
+						"name": "vehicle miles traveled (miles)",
+						"type": "String"
+					},
+					{
+						"name": "vehicle miles traveled (miles/capita)",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh)48",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions49",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh/capita)50",
+						"type": "String"
+					},
+					{
+						"name": "consumption (TcF)51",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions52",
+						"type": "String"
+					},
+					{
+						"name": "consumption (TcF/capita)53",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions54",
+						"type": "String"
+					},
+					{
+						"name": "establishments",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh)56",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions57",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Excel1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1248,6 +1508,36 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/pipeline2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger3')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipeline3",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 15,
+						"startTime": "2026-11-20T07:08:00",
+						"timeZone": "GMT Standard Time"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pipeline3')]"
 			]
 		},
 		{
@@ -1430,33 +1720,135 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/trigger3')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
+			"name": "[concat(parameters('factoryName'), '/dataflow2')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "pipeline3",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
+				"type": "MappingDataFlow",
 				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 15,
-						"startTime": "2026-11-20T07:08:00",
-						"timeZone": "GMT Standard Time"
-					}
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "Excel1",
+								"type": "DatasetReference"
+							},
+							"name": "source1"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "DelimitedText5",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "select1"
+						},
+						{
+							"name": "derivedColumn1"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          Column_1 as string,",
+						"          Column_2 as string,",
+						"          Column_3 as string,",
+						"          Column_4 as string,",
+						"          Column_5 as string,",
+						"          Column_6 as string,",
+						"          Column_7 as string,",
+						"          Column_8 as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> source1",
+						"source1 select(mapColumn(",
+						"          co1 = Column_1,",
+						"          Co2 = Column_2,",
+						"          Co3 = Column_3,",
+						"          Co4 = Column_4,",
+						"          Co5 = Column_5,",
+						"          Co6 = Column_6,",
+						"          Co7 = Column_7,",
+						"          Co8 = Column_8",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> select1",
+						"select1 derive(total_sales = toInteger(co1) * toInteger(Co2)) ~> derivedColumn1",
+						"derivedColumn1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     input(",
+						"          state_id as string,",
+						"          state_abbr as string,",
+						"          county_state_name as string,",
+						"          county_id as string,",
+						"          county_name as string,",
+						"          latitude as string,",
+						"          longitude as string,",
+						"          {consolidated_city-county} as string,",
+						"          population as string,",
+						"          population_cohort as string,",
+						"          employment as string,",
+						"          employment_cohort as string,",
+						"          doe_climate_zone as string,",
+						"          cohort as string,",
+						"          {consumption (MWh)14} as string,",
+						"          {expenditures in Millions15} as string,",
+						"          {consumption (MWh/capita)16} as string,",
+						"          {expenditures in Millions17} as string,",
+						"          {utility customers18} as string,",
+						"          {GHG emissions mtons CO2e} as string,",
+						"          {consumption (TcF)20} as string,",
+						"          {expenditures in Millions21} as string,",
+						"          {consumption (TcF/capita)22} as string,",
+						"          {expenditures in Millions23} as string,",
+						"          {utility customers24} as string,",
+						"          {occuped housing units} as string,",
+						"          {consumption (MWh)26} as string,",
+						"          {expenditures in Millions27} as string,",
+						"          {consumption (MWh/capita)28} as string,",
+						"          {expenditures in Millions29} as string,",
+						"          {consumption (MWh)30} as string,",
+						"          {expenditures in Millions31} as string,",
+						"          {utility customers32} as string,",
+						"          {consumption (TcF)33} as string,",
+						"          {expenditures in Millions34} as string,",
+						"          {consumption (TcF/capita)35} as string,",
+						"          {expenditures in Millions36} as string,",
+						"          {consumption (TcF)37} as string,",
+						"          {expenditures in Millions38} as string,",
+						"          {utility customers39} as string,",
+						"          buildings as string,",
+						"          {area (sq. ft.)} as string,",
+						"          {consumption (gallons)42} as string,",
+						"          {consumption (gallons/capita)43} as string,",
+						"          {consumption (gallons)44} as string,",
+						"          {consumption (gallons/capita)45} as string,",
+						"          {vehicle miles traveled (miles)} as string,",
+						"          {vehicle miles traveled (miles/capita)} as string,",
+						"          {consumption (MWh)48} as string,",
+						"          {expenditures in Millions49} as string,",
+						"          {consumption (MWh/capita)50} as string,",
+						"          {consumption (TcF)51} as string,",
+						"          {expenditures in Millions52} as string,",
+						"          {consumption (TcF/capita)53} as string,",
+						"          {expenditures in Millions54} as string,",
+						"          establishments as string,",
+						"          {consumption (MWh)56} as string,",
+						"          {expenditures in Millions57} as string",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink1"
+					]
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline3')]"
+				"[concat(variables('factoryId'), '/datasets/Excel1')]",
+				"[concat(variables('factoryId'), '/datasets/DelimitedText5')]"
 			]
 		}
 	]
