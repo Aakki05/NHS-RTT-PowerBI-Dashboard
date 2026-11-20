@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-dataeng-5596"
 		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
 		"AzureDataLakeStorage1_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
@@ -182,6 +186,80 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline3')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "ExcelSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "Excel1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DelimitedText4",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Excel1')]",
+				"[concat(variables('factoryId'), '/datasets/DelimitedText4')]"
 			]
 		},
 		{
@@ -734,6 +812,329 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText4')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "raw"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "state_id",
+						"type": "String"
+					},
+					{
+						"name": "state_abbr",
+						"type": "String"
+					},
+					{
+						"name": "county_state_name",
+						"type": "String"
+					},
+					{
+						"name": "county_id",
+						"type": "String"
+					},
+					{
+						"name": "county_name",
+						"type": "String"
+					},
+					{
+						"name": "latitude",
+						"type": "String"
+					},
+					{
+						"name": "longitude",
+						"type": "String"
+					},
+					{
+						"name": "consolidated_city-county",
+						"type": "String"
+					},
+					{
+						"name": "population",
+						"type": "String"
+					},
+					{
+						"name": "population_cohort",
+						"type": "String"
+					},
+					{
+						"name": "employment",
+						"type": "String"
+					},
+					{
+						"name": "employment_cohort",
+						"type": "String"
+					},
+					{
+						"name": "doe_climate_zone",
+						"type": "String"
+					},
+					{
+						"name": "cohort",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh)14",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions15",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh/capita)16",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions17",
+						"type": "String"
+					},
+					{
+						"name": "utility customers18",
+						"type": "String"
+					},
+					{
+						"name": "GHG emissions mtons CO2e",
+						"type": "String"
+					},
+					{
+						"name": "consumption (TcF)20",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions21",
+						"type": "String"
+					},
+					{
+						"name": "consumption (TcF/capita)22",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions23",
+						"type": "String"
+					},
+					{
+						"name": "utility customers24",
+						"type": "String"
+					},
+					{
+						"name": "occuped housing units",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh)26",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions27",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh/capita)28",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions29",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh)30",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions31",
+						"type": "String"
+					},
+					{
+						"name": "utility customers32",
+						"type": "String"
+					},
+					{
+						"name": "consumption (TcF)33",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions34",
+						"type": "String"
+					},
+					{
+						"name": "consumption (TcF/capita)35",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions36",
+						"type": "String"
+					},
+					{
+						"name": "consumption (TcF)37",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions38",
+						"type": "String"
+					},
+					{
+						"name": "utility customers39",
+						"type": "String"
+					},
+					{
+						"name": "buildings",
+						"type": "String"
+					},
+					{
+						"name": "area (sq. ft.)",
+						"type": "String"
+					},
+					{
+						"name": "consumption (gallons)42",
+						"type": "String"
+					},
+					{
+						"name": "consumption (gallons/capita)43",
+						"type": "String"
+					},
+					{
+						"name": "consumption (gallons)44",
+						"type": "String"
+					},
+					{
+						"name": "consumption (gallons/capita)45",
+						"type": "String"
+					},
+					{
+						"name": "vehicle miles traveled (miles)",
+						"type": "String"
+					},
+					{
+						"name": "vehicle miles traveled (miles/capita)",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh)48",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions49",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh/capita)50",
+						"type": "String"
+					},
+					{
+						"name": "consumption (TcF)51",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions52",
+						"type": "String"
+					},
+					{
+						"name": "consumption (TcF/capita)53",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions54",
+						"type": "String"
+					},
+					{
+						"name": "establishments",
+						"type": "String"
+					},
+					{
+						"name": "consumption (MWh)56",
+						"type": "String"
+					},
+					{
+						"name": "expenditures in Millions57",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Excel1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "NPS_DATA",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "review_data1.xlsx",
+						"container": "raw"
+					}
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -778,6 +1179,36 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/pipeline1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger2')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipeline2",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 15,
+						"startTime": "2026-11-20T05:38:00",
+						"timeZone": "GMT Standard Time"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pipeline2')]"
 			]
 		},
 		{
@@ -957,36 +1388,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]",
 				"[concat(variables('factoryId'), '/datasets/DelimitedText3')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/trigger2')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "pipeline2",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 15,
-						"startTime": "2026-11-20T05:38:00",
-						"timeZone": "GMT Standard Time"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline2')]"
 			]
 		}
 	]
