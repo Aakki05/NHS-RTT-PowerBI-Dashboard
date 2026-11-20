@@ -10,6 +10,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "Parquet1",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
 				}
 			],
 			"sinks": [
@@ -27,6 +34,9 @@
 				},
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "join1"
 				}
 			],
 			"scriptLines": [
@@ -43,6 +53,29 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
+				"source(output(",
+				"          order_id as string,",
+				"          order_date as string,",
+				"          customer_id as string,",
+				"          region as string,",
+				"          city as string,",
+				"          sales_channel as string,",
+				"          product_name as string,",
+				"          category as string,",
+				"          quantity as integer,",
+				"          unit_price as double,",
+				"          discount_pct as double,",
+				"          gross_amount as double,",
+				"          net_amount as double,",
+				"          cost_amount as double,",
+				"          profit as double,",
+				"          payment_method as string,",
+				"          is_returned as boolean",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> source2",
 				"source1 select(mapColumn(",
 				"          co1 = Column_1,",
 				"          Co2 = Column_2,",
@@ -56,6 +89,11 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
 				"select1 derive(total_sales = toInteger(Co3) * toInteger(Co4)) ~> derivedColumn1",
+				"source2, select1 join(order_id == Co3,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
