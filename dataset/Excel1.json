@@ -5,13 +5,21 @@
 			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"filename": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
 			"sheetName": "NPS_DATA",
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "review_data1.xlsx",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
 				"container": "raw"
 			}
 		},
