@@ -729,6 +729,16 @@
 								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "Fail1",
+						"type": "Fail",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"message": "failed during testing",
+							"errorCode": "1001"
+						}
 					}
 				],
 				"policy": {
