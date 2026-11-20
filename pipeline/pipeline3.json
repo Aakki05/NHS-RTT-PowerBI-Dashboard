@@ -47,7 +47,13 @@
 				"inputs": [
 					{
 						"referenceName": "Excel1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": {
+								"value": "review_data1.xlsx",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
