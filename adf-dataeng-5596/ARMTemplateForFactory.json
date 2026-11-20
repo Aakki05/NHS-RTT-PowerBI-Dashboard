@@ -1778,7 +1778,7 @@
 						"     ),",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true) ~> select1",
-						"select1 derive(total_sales = toInteger(co1) * toInteger(Co2)) ~> derivedColumn1",
+						"select1 derive(total_sales = toInteger(Co3) * toInteger(Co4)) ~> derivedColumn1",
 						"derivedColumn1 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     input(",
