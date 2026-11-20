@@ -40,6 +40,9 @@
 				},
 				{
 					"name": "derivedColumn2"
+				},
+				{
+					"name": "derivedColumn3"
 				}
 			],
 			"scriptLines": [
@@ -91,13 +94,14 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 derive(total_sales = toInteger(Co3) * toInteger(Co4)) ~> derivedColumn1",
+				"derivedColumn3 derive(total_sales = toInteger(Co3) * toInteger(Co4)) ~> derivedColumn1",
 				"source2, select1 join(source2@order_id == select1@order_id,",
 				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
 				"derivedColumn1 derive(order_id = concat('ORD-', toString(order_id))) ~> derivedColumn2",
+				"select1 derive(order_id = concat('ORD-', toString(order_id))) ~> derivedColumn3",
 				"derivedColumn2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
