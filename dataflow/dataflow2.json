@@ -97,7 +97,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
-				"derivedColumn1 derive(order_id = ERROR_FUNCTION('ORD-__SINGLE_QUOTE__ || order_id')) ~> derivedColumn2",
+				"derivedColumn1 derive(order_id = concat('ORD-', toString(order_id))) ~> derivedColumn2",
 				"derivedColumn2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
