@@ -242,7 +242,7 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"filename": {
-										"value": "review_data1.xlsx",
+										"value": "@pipeline().parameters.filenameall",
 										"type": "Expression"
 									}
 								}
@@ -259,6 +259,12 @@
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"filenameall": {
+						"type": "string",
+						"defaultValue": "review_data1.xlsx"
+					}
 				},
 				"annotations": []
 			},
