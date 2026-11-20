@@ -89,7 +89,7 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
 				"select1 derive(total_sales = toInteger(Co3) * toInteger(Co4)) ~> derivedColumn1",
-				"source2, select1 join(source2@order_id == Co3,",
+				"source2, select1 join(source2@order_id == select1@order_id,",
 				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
