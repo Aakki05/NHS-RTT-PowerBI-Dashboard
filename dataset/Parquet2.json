@@ -1,0 +1,89 @@
+{
+	"name": "Parquet2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "sales_data_sample.parquet",
+				"fileSystem": "raw"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "order_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "order_date",
+				"type": "TIMESTAMP_MICROS"
+			},
+			{
+				"name": "customer_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "region",
+				"type": "UTF8"
+			},
+			{
+				"name": "city",
+				"type": "UTF8"
+			},
+			{
+				"name": "sales_channel",
+				"type": "UTF8"
+			},
+			{
+				"name": "product_name",
+				"type": "UTF8"
+			},
+			{
+				"name": "category",
+				"type": "UTF8"
+			},
+			{
+				"name": "quantity",
+				"type": "INT32"
+			},
+			{
+				"name": "unit_price",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "discount_pct",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "gross_amount",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_amount",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "cost_amount",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "profit",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "payment_method",
+				"type": "UTF8"
+			},
+			{
+				"name": "is_returned",
+				"type": "BOOLEAN"
+			}
+		]
+	}
+}
