@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Excel1",
+						"referenceName": "Excel2",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
@@ -54,7 +54,11 @@
 				"          Column_5 as string,",
 				"          Column_6 as string,",
 				"          Column_7 as string,",
-				"          Column_8 as string",
+				"          Column_8 as string,",
+				"          Column_9 as string,",
+				"          Column_10 as string,",
+				"          Column_11 as string,",
+				"          Column_12 as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
