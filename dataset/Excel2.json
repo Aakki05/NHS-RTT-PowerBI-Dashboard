@@ -13,7 +13,8 @@
 				"type": "AzureBlobStorageLocation",
 				"fileName": "ADF_join_practice_data.xlsx",
 				"container": "raw"
-			}
+			},
+			"firstRowAsHeader": true
 		},
 		"schema": [
 			{
