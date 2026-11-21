@@ -1,0 +1,68 @@
+{
+	"name": "dataflow3",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Parquet1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "Excel2",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          order_id as string,",
+				"          order_date as string,",
+				"          customer_id as string,",
+				"          region as string,",
+				"          city as string,",
+				"          sales_channel as string,",
+				"          product_name as string,",
+				"          category as string,",
+				"          quantity as integer,",
+				"          unit_price as double,",
+				"          discount_pct as double,",
+				"          gross_amount as double,",
+				"          net_amount as double,",
+				"          cost_amount as double,",
+				"          profit as double,",
+				"          payment_method as string,",
+				"          is_returned as boolean",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> source1",
+				"source(output(",
+				"          order_id as string,",
+				"          customer_id as string,",
+				"          customer_segment as string,",
+				"          shipping_method as string,",
+				"          order_status as string,",
+				"          delivery_days as short,",
+				"          warehouse as string,",
+				"          sales_rep as string,",
+				"          order_priority as string,",
+				"          customer_rating as short,",
+				"          is_gift as boolean,",
+				"          last_updated as date",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source2"
+			]
+		}
+	}
+}
